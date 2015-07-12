@@ -14,12 +14,15 @@ data <-subset(allData,allData$Date=="2007-02-01" | allData$Date=="2007-02-02" )
 #add new DateTime column
 data$DateTime<-strptime(paste(data$Date,data$Time), "%Y-%m-%d %H:%M:%S")   
 
-#create histogram 
+
+
+#create plot
 par(cex=0.75)
-hist(as.numeric(as.character(data$Global_active_power)),col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+plot(data$DateTime, as.numeric(as.character(data$Global_active_power)), type="l", xlab="",ylab="Global Active Power (kilowatts)")
+
 
 #copy plot to png file
-dev.copy(png,width=480, height=480, file="plot1.png")     
+dev.copy(png,width=480, height=480, file="plot2.png")     
 
 #close PNG device
 dev.off()
